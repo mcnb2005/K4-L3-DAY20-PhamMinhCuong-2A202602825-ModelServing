@@ -1,0 +1,104 @@
+{
+  "backend": "keyword overlap",
+  "mean_ms": {
+    "embed": 0.0,
+    "retrieve": 0.1,
+    "llm": 7878.5,
+    "total": 7878.6
+  },
+  "results": [
+    {
+      "query": "Why is goodput more useful than raw throughput?",
+      "answer": "Based on the provided context, **Goodput** is more useful than raw throughput because it focuses only on requests per second that met the Target Time-to-Failure (TTFT) and Target Time-to-Poll (TPOT) targets.\n\nIn contrast, **Raw Throughput** ignores SLOs (Service Level Objectives). Goodput explicitly states that \"Throughput at saturation ignores SLOs,\" meaning it calculates total throughput without accounting for the specific performance requirements (SLAs) defined by the system. Therefore, Goodput is a more practical and useful metric for evaluating system performance relative to its service commitments.",
+      "contexts": [
+        {
+          "id": "goodput",
+          "score": 1.0
+        },
+        {
+          "id": "paged",
+          "score": 0.0
+        },
+        {
+          "id": "radix",
+          "score": 0.0
+        }
+      ],
+      "embed_backend": "keyword overlap",
+      "timings_ms": {
+        "embed": 0.0,
+        "retrieve": 0.1,
+        "llm": 7981.6,
+        "total": 7981.7
+      },
+      "server_timings": {
+        "prompt_n": 151,
+        "prompt_ms": 662.187,
+        "predicted_n": 125,
+        "predicted_ms": 5009.488
+      }
+    },
+    {
+      "query": "What problem does PagedAttention actually solve?",
+      "answer": "PagedAttention solves the problem of **internal fragmentation in GPU memory** by storing the Key-Value (KV) cache in non-contiguous pages. This design allows the system to remove the wasted internal fragmentation that typically occurs when GPU memory pages are tightly packed or when the KV cache is stored contiguously, thereby optimizing memory usage for compute-bound operations.",
+      "contexts": [
+        {
+          "id": "paged",
+          "score": 1.0
+        },
+        {
+          "id": "radix",
+          "score": 0.0
+        },
+        {
+          "id": "disagg",
+          "score": 0.0
+        }
+      ],
+      "embed_backend": "keyword overlap",
+      "timings_ms": {
+        "embed": 0.0,
+        "retrieve": 0.1,
+        "llm": 5479.8,
+        "total": 5480.0
+      },
+      "server_timings": {
+        "prompt_n": 114,
+        "prompt_ms": 529.407,
+        "predicted_n": 72,
+        "predicted_ms": 2817.775
+      }
+    },
+    {
+      "query": "When does splitting prefill and decode help?",
+      "answer": "Splitting prefill and decode helps primarily when **compute-bound operations require separate execution paths** or when **memory bandwidth is the limiting factor**.\n\nBased on the provided context:\n1.  **Prefill is compute-bound**: It requires significant processing power. Splitting it allows the engine to process compute-intensive tasks on different parts of the pipeline, potentially improving throughput or reducing latency for specific compute-heavy stages.\n2.  **Decode is memory-bandwidth-bound**: It involves reading data from memory. Splitting it allows the engine to process memory-bound tasks on different parts of the pipeline, improving throughput or reducing latency for memory-intensive stages.\n\n**Conclusion:**\nSplitting prefill and decode helps when the **prefill step is compute-bound** (requiring separate processing) or when the **decode step is memory-bandwidth-bound** (requiring separate processing), allowing the system to optimize performance by distributing work across different pipeline stages.",
+      "contexts": [
+        {
+          "id": "disagg",
+          "score": 2.0
+        },
+        {
+          "id": "radix",
+          "score": 1.0
+        },
+        {
+          "id": "batching",
+          "score": 1.0
+        }
+      ],
+      "embed_backend": "keyword overlap",
+      "timings_ms": {
+        "embed": 0.0,
+        "retrieve": 0.1,
+        "llm": 10174.0,
+        "total": 10174.2
+      },
+      "server_timings": {
+        "prompt_n": 113,
+        "prompt_ms": 503.239,
+        "predicted_n": 190,
+        "predicted_ms": 7515.023
+      }
+    }
+  ]
+}
